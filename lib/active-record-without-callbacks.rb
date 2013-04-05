@@ -11,12 +11,11 @@ class ActiveRecordWithoutCallbacks
         #Store previous value for restoring later.
         saved << {
           :take => take,
-          :value => klass.__send__(take).clone
+          :value => klass.__send__(take)
         }
         
         #Clear all callbacks.
-        puts "Clearing #{take}"
-        klass.__send__(take).clear
+        klass.__send__("#{take}=", [])
         
         raise "Expected '#{take}' to be empty but it wasnt: #{klass.__send__(take)}" unless klass.__send__(take).empty?
       end
@@ -26,7 +25,7 @@ class ActiveRecordWithoutCallbacks
       ensure
         #Restore previous callbacks.
         saved.each do |save|
-          klass.__send__(save[:take]).replace(save[:value])
+          klass.__send__("#{save[:take]}=", save[:value])
         end
       end
     #end
