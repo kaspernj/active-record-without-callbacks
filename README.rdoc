@@ -1,6 +1,16 @@
 = active-record-without-callbacks
 
-Description goes here.
+It is pretty straight forward:
+  require 'rubygems'
+  require 'active-record-without-callbacks'
+  
+  ActiveRecordWithoutCallbacks.wo_callbacks(MyModel) do
+    model = MyModel.new(:name => "Kasper")
+    model.save! #No callbacks will be executed!
+  end
+  
+  model = MyModel.new(:name => "Christina")
+  model.save! #Callbacks will be executed!
 
 == Contributing to active-record-without-callbacks
  
