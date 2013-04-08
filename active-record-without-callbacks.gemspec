@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "active-record-without-callbacks"
-  s.version = "0.0.2"
+  s.version = "0.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Kasper Johansen"]
-  s.date = "2013-04-05"
+  s.date = "2013-04-08"
   s.description = "A method that allows you to run code without callbacks for a specific active-record model."
   s.email = "kj@gfish.com"
   s.extra_rdoc_files = [
