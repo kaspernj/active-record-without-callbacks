@@ -49,7 +49,10 @@ class ActiveRecordWithoutCallbacks
       begin
         #Run the given block, now that all callbacks are disabled.
         puts "Yielding block." if @debug
-        return yield
+        
+        klass.observers.disable :all do
+          return yield
+        end
       ensure
         puts "Restoring callbacks." if @debug
         
